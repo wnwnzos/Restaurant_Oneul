@@ -1,0 +1,819 @@
+@charset "utf-8";
+
+
+/*메인 페이지 CSS - main.css */
+
+/*파일머징(합치기)*/
+@import url(reset.css);
+@import url(core.css);
+
+
+
+/*폰트*/
+@font-face {
+
+    font-family: monr;
+    src: url('../fonts/montserrat/Montserrat-Regular.ttf') format('truetype'),
+        url('../fonts/montserrat/Montserrat-Regular.woff') format('woff');
+
+}
+
+@font-face {
+
+    font-family: mont;
+    src: url('../fonts/montserrat/Montserrat-Thin.ttf') format('truetype'),
+        url('../fonts/montserrat/Montserrat-Thin.woff') format('woff');
+
+}
+
+@font-face {
+
+    font-family: mv;
+    src: url('../fonts/mvboli/mvboli.ttf') format('truetype'),
+        url('../fonts/mvboli/mvboli.woff') format('woff');
+
+}
+
+/*커서모양바꾸기*/
+#cursor {
+    position: absolute;
+    z-index: 999;
+    display: block;
+    border-radius: 50%;
+    background: #a8894c;
+    pointer-events: none;
+    transition: all .3s;
+}
+
+.cursor {
+    width: 10px;
+    height: 10px;
+}
+
+.curfill {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: .3;
+    width: 40px;
+    height: 40px;
+    transition: all .3s;
+}
+
+
+/*각 컨텐츠별 공통*/
+.sec {
+    margin-bottom: 6vw;
+}
+
+
+
+/*전체랩*/
+.wrap {
+    /*    outline: 1px dashed blue;*/
+    width: 90%;
+    margin: 0 auto;
+}
+
+/*헤더영역*****************/
+header {
+    position: relative;
+    width: 100%;
+    height: 155px;
+}
+
+/*로고*/
+h1 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+
+/*햄버거메뉴아이콘*/
+.ham {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    /*세로중앙이동*/
+    width: 24px;
+    height: 17px;
+    /*    outline: 2px solid red;*/
+    margin: 0 auto;
+    /*중앙가로중앙-블록박스*/
+    overflow: hidden;
+    cursor: pointer;
+}
+
+/*햄버거 막대 공통*/
+.ham span {
+    position: absolute;
+    left: 0;
+    display: block;
+    width: 24px;
+    height: 1px;
+    background-color: gray;
+
+    /*트랜지션*/
+    transition: left .4s ease-in-out;
+}
+
+/*햄버거버튼에 마우스 오버시 위치이동*/
+.ham:hover span {
+    left: 30px;
+}
+
+/*가상요소로 햄버거 막대 만들기*/
+.ham span::before {
+    content: "";
+    display: block;
+    margin-left: -30px;
+    width: 24px;
+    height: 1px;
+    background-color: gray;
+
+}
+
+/*개별 막대 셋팅*/
+.ham span:nth-child(1) {
+    top: 0;
+}
+
+.ham span:nth-child(2) {
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.ham span:nth-child(3) {
+    bottom: 0;
+
+    /*트랜지션 속도 지연시간주기*/
+    transition-delay: .1s;
+}
+
+
+/*예약버튼*/
+.rbtn1 {
+    position: relative;
+    overflow: hidden;
+    width: 24px;
+    height: 17px;
+    -webkit-transition: all .3s;
+    transition: all .3s;
+}
+
+.rbtn2 {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.line1 {
+    position: absolute;
+    top: 8px;
+    left: 0;
+    width: 23px;
+    height: 23px;
+    border: 1px solid gray;
+    border-radius: 50%;
+}
+
+.line2 {
+    top: 0;
+    left: 6px;
+    width: 11px;
+    height: 1px;
+}
+
+.line2:before {
+    display: block;
+    width: 1px;
+    height: 8px;
+    content: "";
+    top: 1;
+    left: 5px;
+}
+
+.line2,
+.line2:before {
+    position: absolute;
+    background: gray;
+    -webkit-transition: all .3s;
+    transition: all .3s;
+}
+
+.rbtn1:hover .line2 {
+    -webkit-transform: translate3d(0, 3px, 0);
+    transform: translate3d(0, 3px, 0)
+}
+
+.rbtn1:hover .line2:before {
+    height: 5px;
+}
+
+
+/*배너영역*********************/
+.ban {
+    /*    outline: 1px dashed blue;*/
+    width: 100%;
+    height: 40vw;
+    overflow: hidden;
+    position: relative;
+}
+
+/*배너글씨박스*/
+.ban_tit {
+    width: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    position: absolute;
+    z-index: 1;
+    color: #fff;
+    text-align: center;
+}
+
+.ban_tit h2 {
+    font-family: mv;
+    font-size: 4vw;
+    letter-spacing: 5px;
+}
+
+.ban_tit span {
+    display: block;
+    font-family: mont;
+    line-height: 2;
+    font-size: 1vw;
+    letter-spacing: 2px;
+}
+
+.slide {
+    position: relative;
+    /*    outline: 3px solid red;*/
+    left: 0;
+    width: 500%;
+    height: 100%;
+    display: flex;
+
+}
+
+.slide li {
+    position: relative;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 20%;
+    height: 100%;
+
+}
+
+.slide li.ba1 {
+    background-image: url(../images/ban01.jpg);
+}
+
+.slide li.ba2 {
+    background-image: url(../images/ban02.jpg);
+
+}
+
+.slide li.ba3 {
+    background-image: url(../images/ban03.jpg);
+
+}
+
+.slide li.ba4 {
+    background-image: url(../images/ban04.jpg);
+
+}
+
+.slide li.ba5 {
+    background-image: url(../images/ban05.jpg);
+
+}
+
+/*배너컨트롤박스*/
+.control {
+    position: absolute;
+    z-index: 1;
+    right: 1vw;
+    bottom: 1vw;
+    /*    outline: 1px dashed blue;*/
+    width: 7vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+/*이동버튼*/
+
+.bbtn > a:first-child {
+    margin-right: 40px;
+}
+
+/*페이지넘버*/
+.number {
+    color: #fff;
+    font-size: .9vw;
+}
+
+/*타이틀들 공통*/
+.Smalltitle {
+    color: #A8894C;
+    font-weight: bold;
+    font-size: 1vw;
+    letter-spacing: 7px;
+}
+
+.Bigtitle {
+    font-family: mv;
+    font-size: 2vw;
+    letter-spacing: 5px;
+    margin-bottom: 2vw;
+}
+
+/*vale영역*****************************************/
+.value_wrap {
+    position: relative;
+    width: 100%;
+    height: 30vw;
+}
+
+.value_img {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 50vw;
+    height: 30vw;
+    /*    outline: 1px dashed blue;*/
+    background: url(../images/Value_img.jpg)no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+/*텍스트박스*/
+.vale_txt {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    left: 1vw;
+    z-index: 1;
+}
+
+.vale_txt > .ptxt1 {
+    width: 40%;
+    font-size: 1vw;
+    line-height: 2;
+}
+
+.vale_txt > .ptxt2 {
+    width: 50%;
+    font-size: 1vw;
+    line-height: 2;
+}
+
+/*메뉴영역****************************************/
+.menu_wrap {
+    width: 100%;
+}
+
+.menu_txt {
+    text-align: right;
+    margin-bottom: 10vw;
+}
+
+/*메뉴박스*/
+.menu_box {
+    width: 100%;
+    height: 30vw;
+    /*    outline: 1px dashed red;*/
+}
+
+.menu_box > ul {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.menu_box > ul > li {
+    width: 24%;
+    /*    outline: 1px dashed blue;*/
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.menu_box > ul > li:nth-child(1) {
+    background-image: url(../images/menu01.jpg);
+}
+
+.menu_box > ul > li:nth-child(2) {
+    background-image: url(../images/menu02.jpg);
+}
+
+.menu_box > ul > li:nth-child(3) {
+    background-image: url(../images/menu03.jpg);
+}
+
+.menu_box > ul > li:nth-child(4) {
+    background-image: url(../images/menu04.jpg);
+}
+
+.menu_box figure {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    color: #fff;
+    text-align: center;
+    font-family: mv;
+    font-weight: bold;
+}
+
+.menu_box figure figcaption {
+    position: absolute;
+    top: 45%;
+    left: 7%;
+    right: 7%;
+    bottom: 45%;
+    border: 1px solid #fff;
+    border-width: 2px 2px 0;
+    border-radius: 5px;
+}
+
+.menu_box figure .heading {
+    overflow: hidden;
+    transform: translateY(50%);
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+.menu_box figure h5 {
+    display: table;
+    margin: 0 auto;
+    padding: 0 10px;
+    position: relative;
+    text-align: center;
+    width: auto;
+    text-transform: uppercase;
+    font-size: 2vw;
+    color: #fff;
+    letter-spacing: 2px;
+}
+
+.menu_box figure h5::before,
+.menu_box figure h5::after {
+    position: absolute;
+    display: block;
+    width: 500%;
+    height: 2px;
+    content: '';
+    background: #fff;
+    top: 46%;
+    border-radius: 10px;
+}
+
+.menu_box figure h5::before {
+    left: -500%
+}
+
+.menu_box figure h5::after {
+    right: -500%;
+}
+
+.menu_box_txt {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+    padding: 0 20px;
+    margin: 0;
+    opacity: 0;
+    font-size: 1.3vw;
+    line-height: 1.8;
+    font-family: mont;
+    font-weight: 100;
+
+}
+
+.menu_box_txt p:nth-child(3) {
+    margin-top: 1vw;
+}
+
+
+
+.menu_box li:hover figcaption,
+.menu_box .menu_hover figcaption {
+    top: 10%;
+    bottom: 10%;
+}
+
+
+.menu_box li:hover .menu_box_txt,
+.menu_box .menu_hover .menu_box_txt {
+    opacity: 1;
+    transition-delay: 0.35s;
+}
+
+.menu_box figure * {
+    transition: all 0.45s ease-in-out;
+}
+
+
+
+/*쉐프영역*****************************************/
+.chef_wrap {
+    width: 100%;
+}
+
+.chef_txt {
+    text-align: left;
+    margin-bottom: 10vw;
+}
+
+/*공통박스*/
+.chef_box {
+    width: 50%;
+    height: 100%;
+    /*    outline: 1px dashed blue;*/
+    margin: 0 auto;
+}
+
+.chef_box > ul {
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+
+.chef_box > ul > li {
+    width: 50%;
+    height: 28vw;
+    /*    outline: 1px dashed red;*/
+}
+
+
+
+/*쉐프소개*/
+.chef_info {
+    width: 85%;
+    margin: 0 auto;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    font-family: monr;
+}
+
+.chef_info h4 {
+    font-family: mv;
+    font-size: 2vw;
+    color: #A8894C;
+    font-weight: 100;
+    letter-spacing: 3px;
+}
+
+.chef_info > span {
+    display: block;
+
+    line-height: 1.6;
+    font-size: 1vw;
+}
+
+.chef_info > ol {
+    margin-top: 1vw;
+    font-size: .8vw;
+}
+
+.chef_info > ol > li {
+    margin-bottom: .8vw;
+}
+
+.chef_info > ol > li > span {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: #A8894C;
+    display: inline-block;
+    margin-right: 10px;
+
+}
+
+/*첫번째 셰프*/
+.chef1 {
+    margin-bottom: 15vw;
+}
+
+.chef1 > ul > li:nth-child(1) {
+    background: url(../images/chef01.jpg)no-repeat;
+    background-size: cover;
+}
+
+/*두번째 셰프*/
+.chef2 > ul > li:nth-child(2) {
+    background: url(../images/chef02.jpg)no-repeat;
+    background-size: cover;
+}
+
+
+/*룸영역**********************************************/
+.room_wrap {
+    width: 100%;
+
+}
+
+.room_txt {
+    text-align: right;
+    margin-bottom: 10vw;
+}
+
+.roomlist {
+    width: 100%;
+/*    outline: 1px dashed blue;*/
+}
+
+.roomlist > ul {
+    width: 100%;
+    height: 30vw;
+    display: flex;
+    justify-content: space-between;
+}
+
+.roomlist > ul > li {
+    line-height: 2;
+    position: relative;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+}
+
+.roomlist > ul > li > a {
+    text-align: center;
+    display: block;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    font-family: montr;
+    font-size: 1vw;
+    width: 22vw;
+    left: 50%;
+    z-index: 99;
+}
+
+.roomlist > ul > li b {
+    display: block;
+    font-family: mv;
+    font-weight: 100;
+}
+
+.roomlist > ul > li:nth-child(1) {
+    background-image: url(../images/room01_bg.jpg);
+    width: 15%;
+}
+
+.roomlist > ul > li:nth-child(2) {
+    background-image: url(../images/room02_bg.jpg);
+    width: 15%;
+}
+
+.roomlist > ul > li:nth-child(3) {
+    width: 53%;
+}
+
+.roomlist > ul > li:nth-child(4) {
+    background-image: url(../images/room04_bg.jpg);
+    width: 15%;
+}
+
+/*홀박스*/
+.hall_box {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.hall_box > div {
+    position: absolute;
+    width: 100%;
+    height: 30vw;
+    left: 0;
+    top: 0;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    transition: all .3s ease-in-out;
+}
+.hall_box > div img{
+    width: 100%;
+    height: 100%;
+}
+
+.bn:nth-child(1) {
+    background-image: url(../images/room03_01.jpg);
+}
+
+.bn:nth-child(2) {
+    background-image: url(../images/room03_02.jpg);
+}
+
+.bn:nth-child(3) {
+    background-image: url(../images/room03_03.jpg);
+}
+.bn:nth-child(4) {
+    background-image: url(../images/room03_04.jpg);
+}
+
+.bn:nth-child(5) {
+    background-image: url(../images/room03_05.jpg);
+}
+
+.bn:nth-child(6) {
+    background-image: url(../images/room03_06.jpg);
+}
+
+
+.main-bn {
+    width:100%;
+    height:30vw;
+    position:relative;
+}
+
+
+.main-bn > .slider > .slides > .bn {
+    background-repeat:no-repeat;
+    background-position:center;
+    background-size:cover;
+    position:absolute;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    opacity:0;
+    visibility:hidden;
+    transition:opacity 1s, visibility 1s;
+}
+.main-bn > .slider > .slides > .bn.active {
+    opacity:1;
+    visibility:visible;
+}
+
+/* 슬라이더 페이지 버튼 */
+.main-bn > .slider > .page-btns {
+    position: absolute;
+    right: 1vw;
+    bottom: 1vw;
+    width: 5vw;
+    display: flex;
+    justify-content:space-between;
+/*    outline: 1px dashed blue;*/
+}
+
+.main-bn > .slider > .page-btns > .page-btn > {
+    display:inline-block;
+    cursor:pointer;
+}
+
+.main-bn > .slider > .page-btns > .prev-btn {
+    width: 18px;
+    height: 32px;
+    margin-left:1vw;
+    background: url(../images/lbtn.png)no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.main-bn > .slider > .page-btns > .next-btn {
+    width: 18px;
+    height: 32px;
+    margin-left:1vw;
+    background: url(../images/rbtn.png)no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+
+/* 슬라이더 페이지 번호 */
+
+
+.main-bn > .slider > .page-btns > .page-no > span {
+    display:inline-block;
+    color:#fff;
+    font-size:18px;
+    font-weight: bold;
+}
+
+/*버튼효과 리*/
+button {
+    cursor:pointer;
+      -webkit-border-radius: 0;
+    border-radius: 0;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border:0;
+    background-color:transparent;
+    outline: 0;
+}
+
