@@ -6,6 +6,7 @@
 /*파일머징(합치기)*/
 @import url(reset.css);
 @import url(core.css);
+@import url(media.css);
 
 
 
@@ -37,7 +38,7 @@
 /*커서모양바꾸기*/
 #cursor {
     position: absolute;
-    z-index: 999;
+    z-index: 99999999;
     display: block;
     border-radius: 50%;
     background: #a8894c;
@@ -63,7 +64,7 @@
 
 /*각 컨텐츠별 공통*/
 .sec {
-    margin-bottom: 6vw;
+    margin-bottom: 15vw;
 }
 
 
@@ -77,9 +78,17 @@
 
 /*헤더영역*****************/
 header {
-    position: relative;
-    width: 100%;
+    position: fixed;
+    /* position: relative; */
+    top: 0;
+    width: 90%;
     height: 155px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 999;
+    background-color: #E2E1DC;
+    margin: 0 auto;
 }
 
 /*로고*/
@@ -221,6 +230,7 @@ h1 {
     height: 40vw;
     overflow: hidden;
     position: relative;
+    margin-top: 155px;
 }
 
 /*배너글씨박스*/
@@ -299,7 +309,7 @@ h1 {
     right: 1vw;
     bottom: 1vw;
     /*    outline: 1px dashed blue;*/
-    width: 7vw;
+    min-width: 7vw;
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
@@ -315,6 +325,7 @@ h1 {
 .number {
     color: #fff;
     font-size: .9vw;
+    margin-right: 1vw;
 }
 
 /*타이틀들 공통*/
@@ -629,7 +640,7 @@ h1 {
 
 .roomlist {
     width: 100%;
-/*    outline: 1px dashed blue;*/
+    /*    outline: 1px dashed blue;*/
 }
 
 .roomlist > ul {
@@ -666,6 +677,10 @@ h1 {
     display: block;
     font-family: mv;
     font-weight: 100;
+}
+
+.hall{
+    font-size: 3vw;
 }
 
 .roomlist > ul > li:nth-child(1) {
@@ -705,7 +720,8 @@ h1 {
     background-repeat: no-repeat;
     transition: all .3s ease-in-out;
 }
-.hall_box > div img{
+
+.hall_box > div img {
     width: 100%;
     height: 100%;
 }
@@ -721,6 +737,7 @@ h1 {
 .bn:nth-child(3) {
     background-image: url(../images/room03_03.jpg);
 }
+
 .bn:nth-child(4) {
     background-image: url(../images/room03_04.jpg);
 }
@@ -735,28 +752,29 @@ h1 {
 
 
 .main-bn {
-    width:100%;
-    height:30vw;
-    position:relative;
+    width: 100%;
+    height: 30vw;
+    position: relative;
 }
 
 
 .main-bn > .slider > .slides > .bn {
-    background-repeat:no-repeat;
-    background-position:center;
-    background-size:cover;
-    position:absolute;
-    top:0;
-    left:0;
-    right:0;
-    bottom:0;
-    opacity:0;
-    visibility:hidden;
-    transition:opacity 1s, visibility 1s;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 1s, visibility 1s;
 }
+
 .main-bn > .slider > .slides > .bn.active {
-    opacity:1;
-    visibility:visible;
+    opacity: 1;
+    visibility: visible;
 }
 
 /* 슬라이더 페이지 버튼 */
@@ -764,21 +782,20 @@ h1 {
     position: absolute;
     right: 1vw;
     bottom: 1vw;
-    width: 5vw;
+    min-width: 5vw;
     display: flex;
-    justify-content:space-between;
-/*    outline: 1px dashed blue;*/
+    justify-content: space-between;
+    /*    outline: 1px dashed blue;*/
 }
 
 .main-bn > .slider > .page-btns > .page-btn > {
-    display:inline-block;
-    cursor:pointer;
+    display: inline-block;
+    cursor: pointer;
 }
 
 .main-bn > .slider > .page-btns > .prev-btn {
     width: 18px;
     height: 32px;
-    margin-left:1vw;
     background: url(../images/lbtn.png)no-repeat;
     background-size: cover;
     background-position: center;
@@ -787,7 +804,6 @@ h1 {
 .main-bn > .slider > .page-btns > .next-btn {
     width: 18px;
     height: 32px;
-    margin-left:1vw;
     background: url(../images/rbtn.png)no-repeat;
     background-size: cover;
     background-position: center;
@@ -795,25 +811,22 @@ h1 {
 
 
 /* 슬라이더 페이지 번호 */
-
-
 .main-bn > .slider > .page-btns > .page-no > span {
-    display:inline-block;
-    color:#fff;
-    font-size:18px;
+    display: inline-block;
+    color: #fff;
+    font-size: 18px;
     font-weight: bold;
 }
 
-/*버튼효과 리*/
+/*버튼효과 리셋*/
 button {
-    cursor:pointer;
-      -webkit-border-radius: 0;
+    cursor: pointer;
+    -webkit-border-radius: 0;
     border-radius: 0;
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
-    border:0;
-    background-color:transparent;
+    border: 0;
+    background-color: transparent;
     outline: 0;
 }
-
