@@ -11,9 +11,26 @@ $(function () { // jQB //////////////////////////////
             top: posy + "px",
             left: posx + "px"
         });
-
+        
+  
 
     }); //////////////// mousemove ///////////////
+    
+    
+    $("iframe").mouseenter(function(){
+        //console.log("커서올라감?")
+         $("#cursor").css({
+           display:"none"
+        });
+    });
+    
+    $("iframe").mouseleave(function(){
+         $("#cursor").css({
+           display:"block"
+        });
+    });
+    
+    
 
     /*a링크 마우스 오버시 색채우기*/
     $("a,.ham, button").hover(
@@ -219,6 +236,7 @@ $(function () { // jQB //////////////////////////////
     });
 
     setInterval(function () {
+
         $('.main-bn > .slider > .page-btns > .next-btn').click();
     }, 8000);
 
@@ -232,6 +250,7 @@ $(function () { // jQB //////////////////////////////
 
         // 각 배너 페이지 번호 매기기
         $('.main-bn > .slider > .slides > .bn').each(function (index, node) {
+
             $(node).attr('data-slide-no', index + 1);
         });
     };
@@ -240,11 +259,17 @@ $(function () { // jQB //////////////////////////////
 
     // 슬라이더 이동시 페이지 번호 변경
     function updateCurrentPageNumber() {
+
+        // 총슬라이드 개수
         var totalSlideNo = $('.main-bn > .slider').attr('data-slide-total');
+        // 넘어가는 슬라이드 번호
         var currentSlideNo = $('.main-bn > .slider > .slides > .bn.active').attr('data-slide-no');
+        //console.log(currentSlideNo);
 
         $('.main-bn > .slider > .page-btns > .page-no > .total-slide-no').html(totalSlideNo);
         $('.main-bn > .slider > .page-btns > .page-no > .current-slide-no').html(currentSlideNo);
+
+
     };
 
     updateCurrentPageNumber()

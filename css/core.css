@@ -10,7 +10,7 @@ body {
     font-size: 15px;
     /*글자기본크기 16px을 변경함*/
     color: #333;
-    font-family: mont;
+    font-family: 'mont' 'Noto Sans Korean', sans-serif;
     background-color: #E2E1DC;
     overflow-x: hidden;
 }
