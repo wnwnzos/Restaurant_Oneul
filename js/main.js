@@ -26,6 +26,14 @@ $(function () { // jQB //////////////////////////////
   });
     
     
+    /*메뉴리스트 클릭시 메뉴창 닫기*/
+    var mlist = $(".mwrap > nav > ul > li > a");
+    mlist.click(function(){
+        $(".ham").removeClass("toggle");
+        $(".mwrap").removeClass("down");
+        $("body").removeClass("bodyYhd");
+    });
+    
     
     
     
