@@ -14,6 +14,9 @@ body {
     background-color: #E2E1DC;
     overflow-x: hidden;
 }
+.bodyYhd{
+    overflow-y: hidden;
+}
 
 
 
@@ -55,22 +58,3 @@ body {
 }
 
 
-/*비율유지 class*/
-.rbx {
-    position: relative;
-    overflow: hidden;
-}
-
-.rbx::before {
-    content: '';
-    display: block;
-}
-
-.ibx {
-    /*비율유지속박스*/
-    position: relative;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-}

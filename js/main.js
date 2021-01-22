@@ -17,6 +17,26 @@ $(function () { // jQB //////////////////////////////
     }); //////////////// mousemove ///////////////
     
     
+    
+    /*메뉴창************************************/
+  $(".ham").click(function(){
+      $(this).toggleClass("toggle");
+      $(".mwrap").toggleClass("down");
+      $("body").toggleClass("bodyYhd");
+  });
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    /*지도에 마우스 오버시 커서 바꾸기*/
     $("iframe").mouseenter(function(){
         //console.log("커서올라감?")
          $("#cursor").css({
@@ -31,9 +51,11 @@ $(function () { // jQB //////////////////////////////
     });
     
     
+    
+    
 
     /*a링크 마우스 오버시 색채우기*/
-    $("a,.ham, button").hover(
+    $("a,.ham, button, select").hover(
         function () { // 오버시
             //console.log("호버");
             $(".cursor").addClass("curfill");

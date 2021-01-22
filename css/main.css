@@ -61,6 +61,72 @@
     transition: all .3s;
 }
 
+/*메뉴창*********************************/
+.mwrap {
+    width: 100%;
+    height: calc(100% - 155px);
+    z-index: 9999;
+    position: fixed;
+    right: 0;
+    top: -100%;
+    background-color: #E2E1DC;
+    transition: all .58s ease-in-out;
+}
+.down{
+    top: 155px;
+    transition: all .58s ease-in-out;
+}
+.mwrap > nav{
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.mwrap > nav > ul {
+    width: 100%;
+    height: 100%;
+    /*    outline: 1px dashed blue;  */
+}
+
+.mwrap > nav > ul > li {
+    /*    outline: 1px dashed red;*/
+    height: 16.66%;
+    font-size: 3vw;
+    text-align: center;
+    font-family: mv;
+}
+
+.mwrap > nav > ul > li > a {
+    position: relative;
+    display: inline-block;
+    /*    outline: 1px dashed red;*/
+    line-height: 2;
+    color: rgba(51, 51, 51, 0.54);
+}
+
+.mwrap > nav > ul > li > a >span{
+  display: inline-block;
+    width: 0;
+    margin-right: 10px;
+    height: 8px;
+    background-color: #333;
+    transition: all .3s ease-in;
+/*    outline: 1px dashed blue;*/
+    transition: all .3s ease-in;
+}
+.mwrap > nav > ul > li > a:hover{
+    color: #333;
+}
+.mwrap > nav > ul > li > a:hover >span {
+    width: 4vw;
+    transition: all .3s ease-in;
+}
+
+
+
+
+
+
+
 
 /*각 컨텐츠별 공통*/
 .sec {
@@ -102,63 +168,128 @@ h1 {
 
 /*햄버거메뉴아이콘*/
 .ham {
+    overflow: hidden;
+    width: 24px;
+    height: 17px;
+    outline: none;
+    cursor: pointer;
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    /*세로중앙이동*/
-    width: 24px;
-    height: 17px;
-    /*    outline: 2px solid red;*/
-    margin: 0 auto;
-    /*중앙가로중앙-블록박스*/
-    overflow: hidden;
-    cursor: pointer;
 }
 
-/*햄버거 막대 공통*/
 .ham span {
     position: absolute;
-    left: 0;
+    right: 0;
     display: block;
-    width: 24px;
+    width: 100%;
     height: 1px;
-    background-color: gray;
-
-    /*트랜지션*/
-    transition: left .4s ease-in-out;
+    -webkit-transform-origin: center center auto;
+    transform-origin: center center auto;
+    -webkit-transition: all .4s;
+    transition: all .4s
 }
 
-/*햄버거버튼에 마우스 오버시 위치이동*/
-.ham:hover span {
-    left: 30px;
+.ham span:before {
+    right: calc(100% + 10px)
 }
 
-/*가상요소로 햄버거 막대 만들기*/
-.ham span::before {
+.ham span:after,
+.ham span:before {
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 1px;
     content: "";
-    display: block;
-    margin-left: -30px;
-    width: 24px;
-    height: 1px;
-    background-color: gray;
-
+    top: 0;
+    background: gray;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden
 }
 
-/*개별 막대 셋팅*/
-.ham span:nth-child(1) {
-    top: 0;
+.ham span:after {
+    right: 0
+}
+
+.ham span:first-child {
+    top: 0
 }
 
 .ham span:nth-child(2) {
-    top: 50%;
-    transform: translateY(-50%);
+    top: 8px
 }
 
 .ham span:nth-child(3) {
-    bottom: 0;
+    bottom: 0
+}
 
-    /*트랜지션 속도 지연시간주기*/
-    transition-delay: .1s;
+.ham:hover:not(.toggle) span:after,
+.ham:hover:not(.toggle) span:before {
+    -webkit-animation: ani .5s;
+    animation: ani .5s
+}
+
+.ham:hover:not(.toggle) span:nth-child(2):before {
+    -webkit-animation-delay: .1s;
+    animation-delay: .1s
+}
+
+.ham:hover:not(.toggle) span:nth-child(3):before {
+    -webkit-animation-delay: .2s;
+    animation-delay: .2s
+}
+
+
+/*닫기버튼*/
+.toggle span:first-child {
+    -webkit-transform: translateY(8px) rotate(45deg);
+    transform: translateY(8px) rotate(45deg)
+}
+
+.toggle span:nth-child(3) {
+    -webkit-transform: translateY(-8px) rotate(-45deg);
+    transform: translateY(-8px) rotate(-45deg)
+}
+
+.toggle span:nth-child(2) {
+    opacity: 0 !important
+}
+
+.toggle:hover span:before {
+    -webkit-animation: ani .5s;
+    animation: ani .5s;
+    -webkit-animation-delay: .1s;
+    animation-delay: .1s
+}
+
+.toggle:hover span:after {
+    -webkit-animation: ani .5s;
+    animation: ani .5s
+}
+
+
+@-webkit-keyframes ani {
+    0% {
+        -webkit-transform: translate(0);
+        transform: translate(0)
+    }
+
+    to {
+        -webkit-transform: translate(calc(100% + 10px));
+        transform: translate(calc(100% + 10px))
+    }
+}
+
+@keyframes ani {
+    0% {
+        -webkit-transform: translate(0);
+        transform: translate(0)
+    }
+
+    to {
+        -webkit-transform: translate(calc(100% + 10px));
+        transform: translate(calc(100% + 10px))
+    }
 }
 
 
@@ -790,7 +921,7 @@ h1 {
     position: absolute;
     right: 1vw;
     bottom: 1vw;
-    min-width: 5vw;
+    min-width: 6vw;
     display: flex;
     justify-content: space-between;
     /*    outline: 1px dashed blue;*/
@@ -927,7 +1058,7 @@ address,
 }
 
 .info_box > li ul > li {
-    height: 5vw;
+    min-height: 5vw;
     padding: 1vw;
 }
 
@@ -971,9 +1102,6 @@ address,
 }
 
 /*시간영역2 - 세번째줄*/
-.time2 li {
-    /*    line-height: 3vw;*/
-}
 
 .time2 li:nth-child(1) {
     flex: 1;
@@ -981,4 +1109,145 @@ address,
 
 .time2 li:nth-child(2) {
     flex: 10;
+}
+
+
+/*푸터영역*****************************************/
+
+.footer {
+    /*    outline: 1px dashed blue;*/
+    /*    height: 30vw;*/
+    border-top: 1px solid #A8894C;
+}
+
+.footer_wrap {
+    width: 90%;
+    margin: 0 auto;
+    /*        outline: 1px dashed blue;*/
+    height: 100%;
+    padding: 30px 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+/*푸터로고*/
+.footer_wrap > h5 {
+    width: 20%;
+}
+
+.footer_wrap > h5 img {
+    width: 50%;
+}
+
+/*오른쪽 박스*/
+.rbx {
+    width: 70%;
+    height: 100%;
+    /*    outline: 1px dashed red;*/
+    font-size: 1vw;
+    letter-spacing: 5px;
+    color: #928E8E;
+    padding-right: 6%;
+}
+
+.rbx > ul {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2vw;
+
+}
+
+.rbx > ul > li {}
+
+.rbx > ul > li > a {
+    color: #928E8E;
+    position: relative;
+    transition: transform 1.2s cubic-bezier(.4, 0, .2, 1);
+}
+
+/*동그라미애니메이션 셋팅*/
+.rbx > ul > li > a::before {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    left: 50%;
+    top: -30%;
+    transform: translateX(-50%);
+    background-color: rgba(168, 137, 76, 0.39);
+    transition: all .3s ease-in;
+}
+
+/*밑줄애니메이션 셋팅*/
+.rbx > ul > li > a::after {
+    content: '';
+    display: block;
+    position: absolute;
+    z-index: -1;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background-color: #928E8E;
+    transform: scale(0);
+    transition: transform 1.2s cubic-bezier(.4, 0, .2, 1);
+    transform-origin: right;
+}
+
+/*밑줄애니메이션*/
+.rbx > ul > li > a:hover::after {
+    transform: scale(1);
+    transform-origin: left;
+}
+
+/*동그라미애니메이션*/
+.rbx > ul > li > a:hover::before {
+    width: 10px;
+    height: 10px;
+    transition: all 1.2s;
+}
+
+/*아래글*/
+.rbx > p:last-child {
+    color: #A8894C;
+    margin-top: 2vw;
+}
+
+.rbx > p span {
+    display: block;
+    margin-top: 2vw;
+}
+
+/*패밀리사이트 박스*/
+.family {
+    min-width: 14%;
+    height: 100%;
+    /*    outline: 1px dashed purple;*/
+
+}
+
+/*셀렉트박스*/
+.family select {
+    border: 0;
+    background-color: transparent;
+    font-size: .8vw;
+    height: 50px;
+    color: #928E8E;
+    border-bottom: 1px solid #928E8E;
+    padding-right: 10%;
+    margin-right: 5%;
+    cursor: pointer;
+}
+
+select:focus {
+    outline: none;
+}
+
+
+/*sns*/
+.sns {
+    /*    outline: 1px dashed red;*/
+    vertical-align: middle;
 }
