@@ -139,84 +139,140 @@
 
 
 /*예약모달창****************************/
-.res_modal{
+.res_modal {
     position: fixed;
-    width:15%;
-    height:44%;
- outline: 1px dashed red;
+    width: 15%;
+    height: 44%;
+    /*    outline: 1px dashed red;*/
     z-index: 99999;
     top: 155px;
     right: 0;
-    background-color: rgba(221, 221, 221, 0.83);
-/*    display: none;*/
+    background-color: rgba(221, 221, 221, 1);
+    opacity: 0;
+    transition: all .5s ease-in;
 }
+
+
+/*모달토글클래스*/
+.modalon {
+    opacity: 1;
+    transition: all .5s ease-in;
+}
+
+.res_topline {
+    position: absolute;
+    top: -8%;
+    left: 64%;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 50px;
+    /*    outline: 1px dashed blue;*/
+    background: url(../images/line.png)no-repeat;
+}
+
 
 /*예약박스*/
-.res_box{
-    padding: 30% 10% 10% 10%;
+.res_box {
+    position: relative;
+    /*예약버튼의 부모*/
+    padding-top: 30%;
+    /*    outline: 1px dashed blue;*/
+    height: 100%;
+    width: 80%;
+    margin: 0 auto;
 }
 
-.res_box h6{
+.res_box h6 {
     font-size: 1.5vw;
     margin-bottom: 2vw;
+    font-family: mont;
 }
 
 /*예약날짜*/
-.resDate{
+.resDate {
+    /*    outline: 1px dashed blue;*/
     line-height: 2;
     margin-bottom: 1vw;
+    cursor: pointer;
 }
-.date{
+
+.date {
     width: 100%;
-    height: 30px;
+    height: 40px;
     padding-left: 5%;
-    line-height: 30px;
+    line-height: 40px;
     background-color: #fff;
-    
+    color: #777777;
+    position: relative;
+}
+
+/*달력아이콘*/
+.date .calendarIcon {
+    position: absolute;
+    top: 50%;
+    right: 5%;
+    transform: translateY(-50%);
 }
 
 /*인원수*/
-
-.resPeNum{
+.resPeNum {
     width: 100%;
-    height: 100%;
-    outline: 1px dashed blue;
+/*    outline: 1px dashed blue;*/
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
 }
-.resPeNum li{
+
+.resPeNum > li {
     width: 50%;
+    text-align: left;
+    line-height: 2;
+}
+
+
+/*성인, 어린이 공통박스*/
+.resPbox {
+    background-color: #fff;
+    width: 50%;
+    height: 30px;
+    text-align: left;
+    padding-left: 10px;
+    color: #777777;
+}
+
+/*업다운아이콘*/
+.updown{
+/*    outline: 1px dashed red;*/
+    width: 20%;
+    float: right;
+    height: 100%;
+}
+.updown> li{
+    height: 50%;
+}
+.updown> li > a{
+    display: block;
     text-align: center;
-}
-
-.adult{
-    background-color: #fff;
-    width: 50%;
-    height: 100%;
-}
-
-.child{
-    background-color: #fff;
-    width: 50%;
-    height: 100%;
+    line-height: 50%;
 }
 
 /*예약하기버튼*/
-.resbtn{
+.resbtn {
     position: absolute;
     width: 100%;
+    margin: 0 auto;
     height: 50px;
+    line-height: 50px;
     background-color: #333;
-    bottom:10%;
-}
-.resbtn a{
-     color: #fff;
-    position: absolute;
+    bottom: 10%;
     left: 50%;
-    top: 50%;
-    transform: translate(-50%,-50%
-    );
+    text-align: center;
+    transform: translateX(-50%);
 }
+
+.resbtn a {
+    color: #fff;
+}
+
 
 
 
@@ -584,10 +640,17 @@ h1 {
 }
 
 /*vale영역*****************************************/
+#value{
+    bottom: -10vw;
+    opacity: 0;
+    transition: all 1s ease-in-out;
+}
+
 .value_wrap {
     position: relative;
     width: 100%;
     height: 30vw;
+    
 }
 
 .value_img {
@@ -634,6 +697,11 @@ h1 {
 .menu_txt {
     text-align: right;
     margin-bottom: 10vw;
+    /*스크롤액션셋팅*/
+     position: relative;
+    bottom: -10vw;
+    opacity: 0;
+    transition: all 1s ease-in-out;
 }
 
 /*메뉴박스*/
@@ -641,6 +709,12 @@ h1 {
     width: 100%;
     height: 30vw;
     /*    outline: 1px dashed red;*/
+    /*스크롤액션셋팅*/
+    position: relative;
+    bottom: -10vw;
+    opacity: 0;
+    transition: all 1s ease-in-out;
+    transition-delay: 1s;
 }
 
 .menu_box > ul {
@@ -785,6 +859,11 @@ h1 {
 .chef_txt {
     text-align: left;
     margin-bottom: 10vw;
+    /*스크롤액션 셋팅*/
+    position: relative;
+    bottom: -10vw;
+    opacity: 0;
+    transition: all 1s ease-in-out;
 }
 
 /*공통박스*/
@@ -856,6 +935,12 @@ h1 {
 /*첫번째 셰프*/
 .chef1 {
     margin-bottom: 15vw;
+    /*스크롤액션 셋팅*/
+    position: relative;
+    bottom: -10vw;
+    opacity: 0;
+    transition: all 1s ease-in-out;
+    transition-delay: 1s;
 }
 
 .chef1 > ul > li:nth-child(1) {
@@ -864,6 +949,13 @@ h1 {
 }
 
 /*두번째 셰프*/
+.chef2{
+    /*스크롤액션 셋팅*/
+    position: relative;
+    bottom: -10vw;
+    opacity: 0;
+    transition: all 1s ease-in-out;
+}
 .chef2 > ul > li:nth-child(2) {
     background: url(../images/chef02.jpg)no-repeat;
     background-size: cover;
@@ -879,11 +971,22 @@ h1 {
 .room_txt {
     text-align: right;
     margin-bottom: 10vw;
+    /*스크롤액션 셋팅*/
+    position: relative;
+    bottom: -10vw;
+    opacity: 0;
+    transition: all 1s ease-in-out;
 }
 
 .roomlist {
     width: 100%;
     /*    outline: 1px dashed blue;*/
+    /*스크롤액션 셋팅*/
+    position: relative;
+    bottom: -10vw;
+    opacity: 0;
+    transition: all 1s ease-in-out;
+    transition-delay: 1s;
 }
 
 .roomlist > ul {
@@ -1085,6 +1188,11 @@ button {
     width: 100%;
     /*    outline: 1px dashed blue;*/
     margin-bottom: 6vw;
+    /*스크롤액션 셋팅*/
+    position: relative;
+    bottom: -10vw;
+    opacity: 0;
+    transition: all 1s ease-in-out;
 }
 
 .map_txt h4 {
@@ -1098,6 +1206,12 @@ button {
     /*    outline: 1px dashed red;*/
     display: flex;
     height: 30vw;
+    /*스크롤액션 셋팅*/
+    position: relative;
+    bottom: -10vw;
+    opacity: 0;
+    transition: all 1s ease-in-out;
+    transition-delay: 1s ;
 }
 
 .map_box > li {

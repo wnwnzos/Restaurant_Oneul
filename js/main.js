@@ -1,6 +1,17 @@
 $(function () { // jQB //////////////////////////////
     console.log("로딩완료!");
 
+
+    // 부드러운 스크롤 함수 호출!
+    startSS();
+
+
+
+
+
+
+
+
     /*마우스 커서*/
     $("body").mousemove(function (e) {
         var posx = e.pageX - 5;
@@ -28,6 +39,7 @@ $(function () { // jQB //////////////////////////////
 
     /*메뉴리스트 클릭시 메뉴창 닫기*/
     var mlist = $(".mwrap > nav > ul > li > a");
+
     mlist.click(function () {
         $(".ham").removeClass("toggle");
         $(".mwrap").removeClass("down");
@@ -37,11 +49,11 @@ $(function () { // jQB //////////////////////////////
 
 
     /*예약 달력아이콘 클릭시 보이기*/
-    
-    
-    
-    $("#resbtn").click(function(){
-      $(".cal_modal").slideDown();
+
+
+
+    $("#resbtn").click(function () {
+        $(".res_modal").toggleClass("modalon")
     });
 
 
@@ -70,7 +82,7 @@ $(function () { // jQB //////////////////////////////
 
 
     /*a링크 마우스 오버시 색채우기*/
-    $("a,.ham, button, select").hover(
+    $("a,.ham, button, select, .date").hover(
         function () { // 오버시
             //console.log("호버");
             $(".cursor").addClass("curfill");
@@ -97,12 +109,12 @@ $(function () { // jQB //////////////////////////////
     var sno = 0;
     // 슬라이드 개수 변수
     var scnt = tg.find("li").length;
-    console.log("슬라이드개수:" + scnt);
+    //console.log("슬라이드개수:" + scnt);
     /////////////////////////////////
 
     var goSlide = function (dir) {
 
-        console.log("광클금지상태:" + sprot);
+        //console.log("광클금지상태:" + sprot);
 
         /// 광클 금지 설정 ///////////////////
         if (sprot === 1) return false;
@@ -114,7 +126,7 @@ $(function () { // jQB //////////////////////////////
 
 
         //dir-방향(0-왼쪽, 1-오른쪽)
-        console.log("이동방향:" + dir);
+        //console.log("이동방향:" + dir);
 
         // 오른쪽 전달값이 1이므로 true
         if (dir) {
@@ -309,10 +321,66 @@ $(function () { // jQB //////////////////////////////
 
     };
 
-    updateCurrentPageNumber()
+    updateCurrentPageNumber();
 
 
 
+
+
+
+
+
+    /// 스크롤액션 셋팅 /////////////////////////////////////////
+    // value위치값 셋팅
+    tgpos[0] = $("#value").offset().top;
+    //console.log("value영역위치값:" + tgpos[0]);
+
+    // 시작기준값을 계산함!(원래위치값 - 윈도우절반)
+    tgpos[0] = tgpos[0] - winH / 2
+
+
+
+    // 메뉴위치값 셋팅
+    tgpos[1] = $(".menu_txt").offset().top;
+    //console.log("메뉴txt위치값:" + tgpos[1]);
+
+    // 시작기준값을 계산함!(원래위치값 - 윈도우절반)
+    tgpos[1] = tgpos[1] - winH / 2
+
+
+
+    // 셰프위치값 셋팅 -1
+    tgpos[2] = $(".chef_txt").offset().top;
+    //console.log("셰프txt위치값:" + tgpos[2]);
+
+    // 시작기준값을 계산함!(원래위치값 - 윈도우절반)
+    tgpos[2] = tgpos[2] - winH / 2
+
+
+    
+    // 셰프위치값 셋팅 -2
+    tgpos[3] = $(".chef2").offset().top;
+    //console.log("셰프txt위치값:" + tgpos[2]);
+
+    // 시작기준값을 계산함!(원래위치값 - 윈도우절반)
+    tgpos[3] = tgpos[3] - winH / 2
+
+    
+    
+    // 룸위치값 셋팅
+    tgpos[4] = $(".room_txt").offset().top;
+    //console.log("룸txt위치값:" + tgpos[4]);
+
+    // 시작기준값을 계산함!(원래위치값 - 윈도우절반)
+    tgpos[4] = tgpos[4] - winH / 2
+    
+    
+    // 맵위치값 셋팅
+    tgpos[5] = $(".map_txt").offset().top;
+    console.log("룸txt위치값:" + tgpos[5]);
+
+    // 시작기준값을 계산함!(원래위치값 - 윈도우절반)
+    tgpos[5] = tgpos[5] - winH / 2
 
 
 
@@ -320,3 +388,117 @@ $(function () { // jQB //////////////////////////////
 
 
 }); // jQB ///////////////////////////////////////////////////
+
+
+
+
+
+
+
+// 스크롤액션 /////////////////////////////////////////////////////
+// 윈도우 보이는 화면 (윈도우 높이값)
+var winH = $(window).height();
+// 보이는 화면의 반 또는 어떤 비율만큼 위치값에서 뺀다!
+
+// 위치값 변수(여러개의 위치를 담는 목적)
+var tgpos = [];
+
+$(window).scroll(function () {
+
+    // 현재 스크롤 위치값
+    var scTop = $(this).scrollTop();
+    //console.log("스위:"+scTop);
+
+    // value 영역 스크롤액션!
+    if (scTop > tgpos[0] - 500 &&
+        scTop < tgpos[0]) {
+        //console.log("움직여!");
+        $("#value").css({
+            bottom: "0",
+            opacity: "1"
+        })
+
+
+    } // if //////////////////////////////
+    // 메뉴 영역 스크롤액션!
+    else if (scTop > tgpos[1] - 500 &&
+        scTop < tgpos[1]) {
+        //console.log("움직여!");
+        $(".menu_txt").css({
+            bottom: "0",
+            opacity: "1"
+        })
+        $(".menu_box").css({
+            bottom: "0",
+            opacity: "1"
+        })
+
+
+
+
+    } // esle if ///////////////////////
+    // 셰프 영역 스크롤액션! - 첫번째
+    else if (scTop > tgpos[2] - 600 &&
+        scTop < tgpos[2]) {
+        //console.log("셰프1움직여!");
+        $(".chef_txt").css({
+            bottom: "0",
+            opacity: "1"
+        })
+        $(".chef1").css({
+            bottom: "0",
+            opacity: "1"
+        })
+
+
+
+
+    } // esle if ///////////////////////
+    // 셰프 영역 스크롤액션! - 두번째
+    else if (scTop > tgpos[3] - 600 &&
+        scTop < tgpos[3]) {
+        //console.log("셰프2움직여!");
+        $(".chef2").css({
+            bottom: "0",
+            opacity: "1"
+        })
+
+
+
+    } // esle if ///////////////////////
+    // 룸 영역 스크롤액션!
+    else if (scTop > tgpos[4] - 600 &&
+        scTop < tgpos[4]) {
+        //console.log("룸움직여!");
+        $(".room_txt").css({
+            bottom: "0",
+            opacity: "1"
+        })
+        $(".roomlist").css({
+            bottom: "0",
+            opacity: "1"
+        })
+
+
+
+    } // esle if ///////////////////////
+    // 맵 영역 스크롤액션!
+     else if (scTop > tgpos[5] - 600 &&
+        scTop < tgpos[5]) {
+        console.log("맵움직여!");
+        $(".map_txt").css({
+            bottom: "0",
+            opacity: "1"
+        })
+        $(".map_box").css({
+            bottom: "0",
+            opacity: "1"
+        })
+
+
+
+    } // esle if ///////////////////////
+
+
+}); ////////// scroll /////////////////////////
+//////////////////////////////////////////////

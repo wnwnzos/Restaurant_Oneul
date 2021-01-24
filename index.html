@@ -9,7 +9,7 @@
     <!--제이쿼리라이브러리-->
     <script src="js/jquery-1.7.2.min.js"></script>
     <script src="js/jquery-ui.min.js"></script>
-    <script src="js/calendar.js" charset="euc-kr"></script>
+    <script src="js/smoothScroll20.js"></script>
     <!--charset="euc-kr" 는 자바스크립트로 html을 그릴때 한글이 깨지는 것을 방지함!-->
     <script src="js/main.js"></script>
 </head>
@@ -21,26 +21,40 @@
 
     <!--예약 아이콘 클릭시 달력보이기-->
     <div class="res_modal">
+        <div class="res_topline"></div>
         <div class="res_box">
             <h6>Reservation</h6>
             <!--예약날짜-->
             <div class="resDate">
                 예약 날짜
-                <div class="date">DD MM YYY <img src="" alt=""></div>
+                <div class="date">DD MM YYY <img src="" alt="">
+                    <img src="images/calendar.png" class="calendarIcon" alt="달력아이콘">
+                </div>
             </div>
             <!--인원수-->
-                <ul class="resPeNum">
-                    <li>
-                        성인
-                        <div class="adult"></div>
-                    </li>
-                    <li>
+            <ul class="resPeNum">
+                <li>
+                    성인
+                    <div class="resPbox">1
+                        <ul class="updown">
+                            <li><a href="#"><img src="images/up.png" alt="업아이콘"></a></li>
+                            <li><a href="#"><img src="images/drop.png" alt="다운아이콘"></a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li>
                     어린이
-                    <div class="child"></div>
-                    </li>
-                </ul>
-        
-            <button class="resbtn"><a href="#">예약하기</a></button>
+                    <div class="resPbox">0
+                        <ul class="updown">
+                            <li><a href="#"><img src="images/up.png" alt="업아이콘"></a></li>
+                            <li><a href="#"><img src="images/drop.png" alt="다운아이콘"></a></li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+            <!--버튼-->
+            <div class="resbtn"><a href="#">예약하기</a></div>
+
         </div>
     </div>
 
