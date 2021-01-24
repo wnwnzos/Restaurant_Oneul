@@ -9,15 +9,40 @@
     <!--제이쿼리라이브러리-->
     <script src="js/jquery-1.7.2.min.js"></script>
     <script src="js/jquery-ui.min.js"></script>
+    <script src="js/calendar.js" charset="euc-kr"></script>
+    <!--charset="euc-kr" 는 자바스크립트로 html을 그릴때 한글이 깨지는 것을 방지함!-->
     <script src="js/main.js"></script>
 </head>
 
 <body>
-    
+
     <!--커서모양-->
     <div class="cursor" id="cursor"></div>
 
-
+    <!--예약 아이콘 클릭시 달력보이기-->
+    <div class="res_modal">
+        <div class="res_box">
+            <h6>Reservation</h6>
+            <!--예약날짜-->
+            <div class="resDate">
+                예약 날짜
+                <div class="date">DD MM YYY <img src="" alt=""></div>
+            </div>
+            <!--인원수-->
+                <ul class="resPeNum">
+                    <li>
+                        성인
+                        <div class="adult"></div>
+                    </li>
+                    <li>
+                    어린이
+                    <div class="child"></div>
+                    </li>
+                </ul>
+        
+            <button class="resbtn"><a href="#">예약하기</a></button>
+        </div>
+    </div>
 
     <!-- 전체랩-->
     <div class="wrap">
@@ -31,25 +56,28 @@
             </div>
             <h1><a href="#"><img src="images/logo.png" alt="로고"></a></h1>
             <!--예약버튼-->
-            <a class="rbtn1 rbtn2" href="#"><span class="line1"></span><span class="line2"></span></a>
+            <a class="rbtn1 rbtn2" id="resbtn" href="#"><span class="line1"></span><span class="line2"></span></a>
         </header>
-        
-        
+
+
         <!--메뉴창-->
-    <div class="mwrap">
-        <nav>
-            <ul>
-                <li><a href="#oneul"><span></span>O'NEUL</a></li>
-                <li><a href="#value"><span></span>VALUE</a></li>
-                <li><a href="#menu"><span></span>MENU</a></li>
-                <li><a href="#chef"><span></span>CHEF</a></li>
-                <li><a href="#room"><span></span>ROOM</a></li>
-                <li><a href="#map"><span></span>MAP</a></li>
-            </ul>
-        </nav>
-    </div>
-        
-        
+        <div class="mwrap">
+            <nav>
+                <ul>
+                    <li><a href="#oneul"><span></span><b class="mtext">O'NEUL</b></a></li>
+                    <li><a href="#value"><span></span><b class="mtext">VALUE</b></a></li>
+                    <li><a href="#menu"><span></span><b class="mtext">MENU</b></a></li>
+                    <li><a href="#chef"><span></span><b class="mtext">CHEF</b></a></li>
+                    <li><a href="#room"><span></span><b class="mtext">ROOM</b></a></li>
+                    <li><a href="#map"><span></span><b class="mtext">MAP</b></a></li>
+                </ul>
+            </nav>
+        </div>
+
+
+
+
+
 
         <!--배너영역-->
         <div class="sec ban" id="oneul">
@@ -378,4 +406,6 @@
 
 
 
-</body></html>
+</body>
+
+</html>

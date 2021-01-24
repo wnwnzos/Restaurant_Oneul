@@ -11,56 +11,63 @@ $(function () { // jQB //////////////////////////////
             top: posy + "px",
             left: posx + "px"
         });
-        
-  
+
+
 
     }); //////////////// mousemove ///////////////
-    
-    
-    
+
+
+
     /*메뉴창************************************/
-  $(".ham").click(function(){
-      $(this).toggleClass("toggle");
-      $(".mwrap").toggleClass("down");
-      $("body").toggleClass("bodyYhd");
-  });
-    
-    
+    $(".ham").click(function () {
+        $(this).toggleClass("toggle");
+        $(".mwrap").toggleClass("down");
+        $("body").toggleClass("bodyYhd");
+    });
+
+
     /*메뉴리스트 클릭시 메뉴창 닫기*/
     var mlist = $(".mwrap > nav > ul > li > a");
-    mlist.click(function(){
+    mlist.click(function () {
         $(".ham").removeClass("toggle");
         $(".mwrap").removeClass("down");
         $("body").removeClass("bodyYhd");
     });
+
+
+
+    /*예약 달력아이콘 클릭시 보이기*/
     
     
     
-    
-    
-    
-    
-    
-    
-    
-    
+    $("#resbtn").click(function(){
+      $(".cal_modal").slideDown();
+    });
+
+
+
+
+
+
+
+
     /*지도에 마우스 오버시 커서 바꾸기*/
-    $("iframe").mouseenter(function(){
+    $("iframe").mouseenter(function () {
         //console.log("커서올라감?")
-         $("#cursor").css({
-           display:"none"
+        $("#cursor").css({
+            display: "none"
         });
     });
-    
-    $("iframe").mouseleave(function(){
-         $("#cursor").css({
-           display:"block"
+
+    $("iframe").mouseleave(function () {
+        $("#cursor").css({
+            display: "block"
         });
     });
-    
-    
-    
-    
+
+
+
+
 
     /*a링크 마우스 오버시 색채우기*/
     $("a,.ham, button, select").hover(
