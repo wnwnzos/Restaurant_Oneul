@@ -52,7 +52,8 @@ $(function () { // jQB //////////////////////////////
 
 
 
-    $("#resbtn").click(function () {
+    $("#resbtn").click(function (e) {
+        e.preventDefault();
         $(".res_modal").toggleClass("modalon")
     });
 
