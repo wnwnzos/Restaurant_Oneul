@@ -141,51 +141,109 @@
 /*예약모달창****************************/
 .res_modal {
     position: fixed;
-    width: 15%;
-    height: 44%;
+    width: 100%;
+    height: 100%;
     /*    outline: 1px dashed red;*/
     z-index: 99999;
-    top: 155px;
+    top: 0;
     right: 0;
-    background-color: rgba(221, 221, 221, 1);
+    background-color: rgba(78, 78, 78, 0.75);
+    display: none;
+}
+
+
+
+
+
+/*모달닫기버튼******/
+.modal_cbtn {
+    position: relative;
+    top: 1vw;
+    right: -12vw;
+    margin: auto;
+    width: 2vw;
+    margin-top: 200px;
+    cursor: pointer;
+}
+
+.inner {
+    width: inherit;
+    text-align: center;
+    
+}
+
+label {
+    font-size: .8em;
+    line-height: 4em;
+    text-transform: uppercase;
+    color: #fff;
+    transition: all .3s ease-in;
     opacity: 0;
-    transition: all .5s ease-in;
+    cursor: pointer;
 }
 
-
-/*모달토글클래스*/
-.modalon {
-    opacity: 1;
-    transition: all .5s ease-in;
-}
-
-.res_topline {
+.inner:before,
+.inner:after {
     position: absolute;
-    top: -8%;
-    left: 64%;
-    transform: translateX(-50%);
-    width: 50px;
-    height: 50px;
-    /*    outline: 1px dashed blue;*/
-    background: url(../images/line.png)no-repeat;
+    content: '';
+    height: 2px;
+    width: inherit;
+    background: #E2E1DC;
+    left: 0;
+    transition: all .3s ease-in;
 }
+
+.inner:before {
+    top: 50%;
+    transform: rotate(45deg);
+}
+
+.inner:after {
+    bottom: 50%;
+    transform: rotate(-45deg);
+}
+
+.modal_cbtn:hover label {
+    opacity: 1;
+}
+
+.modal_cbtn:hover .inner:before,
+.modal_cbtn:hover .inner:after {
+    transform: rotate(0);
+}
+
+.modal_cbtn:hover .inner:before {
+    top: 0;
+}
+
+.modal_cbtn:hover .inner:after {
+    bottom: 0;
+}
+
+
+
 
 
 /*예약박스*/
 .res_box {
-    position: relative;
+    position: absolute;
     /*예약버튼의 부모*/
-    padding-top: 30%;
     /*    outline: 1px dashed blue;*/
-    height: 100%;
-    width: 80%;
-    margin: 0 auto;
+    height: 50%;
+    width: 20%;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #E2E1DC;
+
+    padding: 5% 3% 0 3%;
 }
 
 .res_box h6 {
     font-size: 1.5vw;
     margin-bottom: 2vw;
     font-family: mont;
+    letter-spacing: 3px;
 }
 
 /*예약날짜*/
@@ -217,22 +275,25 @@
 /*인원수*/
 .resPeNum {
     width: 100%;
-/*    outline: 1px dashed blue;*/
+    /*    outline: 1px dashed blue;*/
     display: flex;
-    justify-content: flex-start;
+    justify-content: space-between;
 }
 
 .resPeNum > li {
-    width: 50%;
+    width: 90%;
     text-align: left;
     line-height: 2;
 }
 
+.resPeNum > li:last-child {
+    margin-right: -5%;
+}
 
 /*성인, 어린이 공통박스*/
 .resPbox {
     background-color: #fff;
-    width: 50%;
+    width: 90%;
     height: 30px;
     text-align: left;
     padding-left: 10px;
@@ -240,16 +301,18 @@
 }
 
 /*업다운아이콘*/
-.updown{
-/*    outline: 1px dashed red;*/
+.updown {
+    /*    outline: 1px dashed red;*/
     width: 20%;
     float: right;
     height: 100%;
 }
-.updown> li{
+
+.updown > li {
     height: 50%;
 }
-.updown> li > a{
+
+.updown > li > a {
     display: block;
     text-align: center;
     line-height: 50%;
@@ -257,16 +320,15 @@
 
 /*예약하기버튼*/
 .resbtn {
-    position: absolute;
+    position: relative;
+    top: 5vw;
     width: 100%;
     margin: 0 auto;
     height: 50px;
     line-height: 50px;
     background-color: #333;
-    bottom: 10%;
-    left: 50%;
     text-align: center;
-    transform: translateX(-50%);
+
 }
 
 .resbtn a {
@@ -640,7 +702,7 @@ h1 {
 }
 
 /*vale영역*****************************************/
-#value{
+#value {
     bottom: -10vw;
     opacity: 0;
     transition: all 1s ease-in-out;
@@ -650,7 +712,7 @@ h1 {
     position: relative;
     width: 100%;
     height: 30vw;
-    
+
 }
 
 .value_img {
@@ -698,7 +760,7 @@ h1 {
     text-align: right;
     margin-bottom: 10vw;
     /*스크롤액션셋팅*/
-     position: relative;
+    position: relative;
     bottom: -10vw;
     opacity: 0;
     transition: all 1s ease-in-out;
@@ -949,13 +1011,14 @@ h1 {
 }
 
 /*두번째 셰프*/
-.chef2{
+.chef2 {
     /*스크롤액션 셋팅*/
     position: relative;
     bottom: -10vw;
     opacity: 0;
     transition: all 1s ease-in-out;
 }
+
 .chef2 > ul > li:nth-child(2) {
     background: url(../images/chef02.jpg)no-repeat;
     background-size: cover;
@@ -1211,7 +1274,7 @@ button {
     bottom: -10vw;
     opacity: 0;
     transition: all 1s ease-in-out;
-    transition-delay: 1s ;
+    transition-delay: 1s;
 }
 
 .map_box > li {

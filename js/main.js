@@ -51,7 +51,14 @@ $(function () { // jQB //////////////////////////////
     /*예약아이콘 클릭시 예약창 보이기*/
     $("#resbtn").click(function (e) {
         e.preventDefault();
-        $(".res_modal").toggleClass("modalon")
+        $(".res_modal").fadeIn(500);
+    });
+    
+    
+    /*예약모달창 닫기버튼 클릭시 예약모달창 닫기 */
+    $(".modal_cbtn").click(function(e){
+        e.preventDefault();
+        $(".res_modal").fadeOut(500);
     });
 
 
@@ -144,7 +151,7 @@ $(function () { // jQB //////////////////////////////
 
 
     /*a링크 마우스 오버시 색채우기*/
-    $("a,.ham, button, select, .date").hover(
+    $("a,.ham, button, select, .date, .modal_cbtn").hover(
         function () { // 오버시
             //console.log("호버");
             $(".cursor").addClass("curfill");
