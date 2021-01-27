@@ -48,10 +48,7 @@ $(function () { // jQB //////////////////////////////
 
 
 
-    /*예약 달력아이콘 클릭시 보이기*/
-
-
-
+    /*예약아이콘 클릭시 예약창 보이기*/
     $("#resbtn").click(function (e) {
         e.preventDefault();
         $(".res_modal").toggleClass("modalon")
@@ -59,8 +56,72 @@ $(function () { // jQB //////////////////////////////
 
 
 
+    /*성인 up아이콘 클릭시 숫자증가*******/
+    $('.upIcon1').click(function (e) {
+
+        e.preventDefault();
+        var plus = $('.count1').text();
+        var num = parseInt(plus, 10);
+
+        num++;
 
 
+        $('.count1').text(num);
+        console.log(plus);
+    });
+
+    /*성인 down아이콘 클릭시 숫자감소*******/
+    $('.downIcon1').click(function (e) {
+
+        e.preventDefault();
+        var plus = $('.count1').text();
+        var num = parseInt(plus);
+
+        num--;
+
+
+        $('.count1').text(num);
+        //console.log(plus);
+        if (num < 0) {
+
+            alert("한명부터가능합니다.")
+            $('.count1').text("1")
+        }
+    });
+
+    /*어린이 up아이콘 클릭시 숫자증가*******/
+    $('.upIcon2').click(function (e) {
+
+        e.preventDefault();
+        var plus = $('.count2').text();
+        var num = parseInt(plus, 10);
+
+        num++;
+
+
+        $('.count2').text(num);
+        //console.log(plus);
+    });
+
+    
+     /*어린이 down아이콘 클릭시 숫자감소*******/
+    $('.downIcon2').click(function (e) {
+
+        e.preventDefault();
+        var plus = $('.count2').text();
+        var num = parseInt(plus);
+
+        num--;
+
+
+        $('.count2').text(num);
+        console.log(plus);
+        if (num < 0) {
+
+            alert("한명부터가능합니다.")
+            $('.count2').text("0")
+        }
+    });
 
 
 
@@ -358,7 +419,7 @@ $(function () { // jQB //////////////////////////////
     tgpos[2] = tgpos[2] - winH / 2
 
 
-    
+
     // 셰프위치값 셋팅 -2
     tgpos[3] = $(".chef2").offset().top;
     //console.log("셰프txt위치값:" + tgpos[2]);
@@ -366,16 +427,16 @@ $(function () { // jQB //////////////////////////////
     // 시작기준값을 계산함!(원래위치값 - 윈도우절반)
     tgpos[3] = tgpos[3] - winH / 2
 
-    
-    
+
+
     // 룸위치값 셋팅
     tgpos[4] = $(".room_txt").offset().top;
     //console.log("룸txt위치값:" + tgpos[4]);
 
     // 시작기준값을 계산함!(원래위치값 - 윈도우절반)
     tgpos[4] = tgpos[4] - winH / 2
-    
-    
+
+
     // 맵위치값 셋팅
     tgpos[5] = $(".map_txt").offset().top;
     console.log("룸txt위치값:" + tgpos[5]);
@@ -484,7 +545,7 @@ $(window).scroll(function () {
 
     } // esle if ///////////////////////
     // 맵 영역 스크롤액션!
-     else if (scTop > tgpos[5] - 600 &&
+    else if (scTop > tgpos[5] - 600 &&
         scTop < tgpos[5]) {
         console.log("맵움직여!");
         $(".map_txt").css({
