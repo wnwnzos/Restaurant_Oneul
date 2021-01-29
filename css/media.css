@@ -1,9 +1,26 @@
 /*미디어쿼리 - main.css*/
+/*1820이하*/
+@media only screen and (max-width:1820px) {
+
+    
+}
 
 
 
 
-/*1980이하*/
-@media only screen and (max-width:2339px) {
+/*1800이하*/
+@media only screen and (max-width:1800px) {
+    /*예약 모달창**************/
+    .res_box {
+    height: 30%;
+}
+
+
+    /*룸영역**************/
+    .main-bn > .slider > .page-btns {
+    width: 8vw;
+}
+    
 
 }
+

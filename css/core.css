@@ -14,9 +14,10 @@ body {
     background-color: #E2E1DC;
     overflow-x: hidden;
 }
-.bodyYhd{
+body.bodyYhd{
     overflow-y: hidden;
 }
+
 
 
 

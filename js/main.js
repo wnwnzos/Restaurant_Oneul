@@ -34,7 +34,18 @@ $(function () { // jQB //////////////////////////////
         $(this).toggleClass("toggle");
         $(".mwrap").toggleClass("down");
         $("body").toggleClass("bodyYhd");
+        
+    $(".bodyYhd").on('scroll touchmove mousewheel', function () {
+
+        return false;
+
+    })
+        
     });
+    
+
+    
+
 
 
     /*메뉴리스트 클릭시 메뉴창 닫기*/
@@ -44,21 +55,32 @@ $(function () { // jQB //////////////////////////////
         $(".ham").removeClass("toggle");
         $(".mwrap").removeClass("down");
         $("body").removeClass("bodyYhd");
+        $(".bodyYhd").off('scroll touchmove mousewheel'); 
     });
 
 
 
-    /*예약아이콘 클릭시 예약창 보이기*/
-    $("#resbtn").click(function (e) {
-        e.preventDefault();
-        $(".res_modal").fadeIn(500);
-    });
-    
-    
+
+
+
+        /*예약아이콘 클릭시 예약창 보이기*/
+        $("#resbtn").click(function (e) {
+            e.preventDefault();
+            $(".res_modal").fadeIn(500);
+           $("body").addClass("bodyYhd");
+             $(".bodyYhd").on('scroll touchmove mousewheel', function () {
+
+        return false;
+
+    })
+        });
+
+
     /*예약모달창 닫기버튼 클릭시 예약모달창 닫기 */
-    $(".modal_cbtn").click(function(e){
+    $(".modal_cbtn").click(function (e) {
         e.preventDefault();
         $(".res_modal").fadeOut(500);
+        $("body").removeClass("bodyYhd");
     });
 
 
@@ -110,8 +132,8 @@ $(function () { // jQB //////////////////////////////
         //console.log(plus);
     });
 
-    
-     /*어린이 down아이콘 클릭시 숫자감소*******/
+
+    /*어린이 down아이콘 클릭시 숫자감소*******/
     $('.downIcon2').click(function (e) {
 
         e.preventDefault();
@@ -322,33 +344,33 @@ $(function () { // jQB //////////////////////////////
 
     // 세번째 홀영역 박스 배너돌리기
     $('.main-bn > .slider > .page-btns > .page-btn').click(function () {
-        var $clicked = $(this);
-        var $slider = $(this).closest('.slider');
+        var clicked = $(this);
+        var slider = $(this).closest('.slider');
 
         var index = $(this).index();
         var isLeft = index == 0;
         //console.log(index);
 
-        var $current = $slider.find(' > .slides > .bn.active');
-        var $post;
+        var current = slider.find(' > .slides > .bn.active');
+        var post;
 
         if (isLeft) {
-            $post = $current.prev();
+            post = current.prev();
         } else {
-            $post = $current.next();
+            post = current.next();
         }
         //console.log($post.length);
 
-        if ($post.length == 0) {
+        if (post.length == 0) {
             if (isLeft) {
-                $post = $slider.find(' > .slides > .bn:last-child');
+               post = slider.find(' > .slides > .bn:last-child');
             } else {
-                $post = $slider.find(' > .slides > .bn:first-child');
+                post = slider.find(' > .slides > .bn:first-child');
             }
         }
 
-        $current.removeClass('active');
-        $post.addClass('active');
+        current.removeClass('active');
+        post.addClass('active');
 
         updateCurrentPageNumber();
     });

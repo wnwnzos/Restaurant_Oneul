@@ -229,7 +229,7 @@ label {
     position: absolute;
     /*예약버튼의 부모*/
     /*    outline: 1px dashed blue;*/
-    height: 50%;
+    height: 25vw;
     width: 20%;
     left: 50%;
     top: 50%;
@@ -342,17 +342,6 @@ label {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
 /*각 컨텐츠별 공통*/
 .sec {
     margin-bottom: 15vw;
@@ -365,6 +354,7 @@ label {
     /*    outline: 1px dashed blue;*/
     width: 90%;
     margin: 0 auto;
+    
 }
 
 /*헤더영역*****************/
@@ -1300,6 +1290,7 @@ address,
     font-style: normal;
     /*    outline: 1px dashed blue;*/
     margin-bottom: 1vw;
+    line-height: 1.5;
 }
 
 .map_box address span {
