@@ -1,12 +1,17 @@
 // Smooth Scroll JS Verson 2020.12
 // 부드러운 스크롤 2020.12 버전
 // startSS()함수를 호출하여 사용
+
+
+//스크롤 위치값 전역변수화!(메뉴클릭시에 위치반영위해~!) 
+var pos;
+
 function startSS() {
     new SmoothScroll(document, 60, 12)
     /*new SmoothScroll(document, 스크롤내리는속도, 스크롤내렸을때 움직이는속도)*/
 }
 
-function SmoothScroll(target, speed, smooth) {
+function SmoothScroll(target, speed, smooth) {    
     if (target === document)
         target = (document.scrollingElement ||
             document.documentElement ||
@@ -14,7 +19,7 @@ function SmoothScroll(target, speed, smooth) {
             document.body) // cross browser support for document scrolling
 
     var moving = false
-    var pos = target.scrollTop
+    pos = target.scrollTop
     var frame = target === document.body &&
         document.documentElement ?
         document.documentElement :

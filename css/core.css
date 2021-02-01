@@ -14,8 +14,10 @@ body {
     background-color: #E2E1DC;
     overflow-x: hidden;
 }
+/*스크롤안되게 셋팅*/
 body.bodyYhd{
-    overflow-y: hidden;
+    overflow: hidden;
+    height: 100vh;
 }
 
 

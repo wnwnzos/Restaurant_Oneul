@@ -1,3 +1,10 @@
+//// 전역변수 /////
+let autoI4;
+let autoFn4;
+let auto4_sts = 1;//상태값(1일때 실행, 0일때 불가)
+
+
+
 $(function () { // jQB //////////////////////////////
     console.log("로딩완료!");
 
@@ -35,27 +42,40 @@ $(function () { // jQB //////////////////////////////
         $(".mwrap").toggleClass("down");
         $("body").toggleClass("bodyYhd");
         
-    $(".bodyYhd").on('scroll touchmove mousewheel', function () {
-
-        return false;
-
-    })
         
-    });
-    
+        $(".wrap").hide();
 
-    
+    });
+
+
+
 
 
 
     /*메뉴리스트 클릭시 메뉴창 닫기*/
     var mlist = $(".mwrap > nav > ul > li > a");
 
-    mlist.click(function () {
+    mlist.click(function (e) {
+        e.preventDefult;
+        
+        $(".wrap").show();
+
+        var pid = $(this).attr("href");
+        //console.log("아이디:"+pid);
+
+        var pgpos = $(pid).offset().top - 155;
+        //console.log("top값:"+pgpos);
+
+        $("html,body").stop().animate({
+            scrollTop: pgpos + "px"
+        }, 600, "easeInOutQuart");
+
+        // 위치이동값을 전역포지션에 저장하기(씽크맞춤!)
+        pos = pgpos;
+
         $(".ham").removeClass("toggle");
         $(".mwrap").removeClass("down");
         $("body").removeClass("bodyYhd");
-        $(".bodyYhd").off('scroll touchmove mousewheel'); 
     });
 
 
@@ -63,24 +83,24 @@ $(function () { // jQB //////////////////////////////
 
 
 
-        /*예약아이콘 클릭시 예약창 보이기*/
-        $("#resbtn").click(function (e) {
-            e.preventDefault();
-            $(".res_modal").fadeIn(500);
-           $("body").addClass("bodyYhd");
-             $(".bodyYhd").on('scroll touchmove mousewheel', function () {
-
-        return false;
-
-    })
+    /*예약아이콘 클릭시 예약창 보이기*/
+    $("#resbtn").click(function (e) {
+        e.preventDefault();
+        $(".res_modal").fadeIn(500);
+        $(".wrap").css({
+            height: "100vh",
+            overflow: "hidden"
         });
+
+    });
 
 
     /*예약모달창 닫기버튼 클릭시 예약모달창 닫기 */
     $(".modal_cbtn").click(function (e) {
         e.preventDefault();
         $(".res_modal").fadeOut(500);
-        $("body").removeClass("bodyYhd");
+        $(".wrap").attr("style","");
+        
     });
 
 
@@ -150,6 +170,12 @@ $(function () { // jQB //////////////////////////////
             alert("한명부터가능합니다.")
             $('.count2').text("0")
         }
+    });
+
+
+    /*예약창 닫기버튼 클릭시 다시 리셋*/
+    $(".modal_cbtn").click(function () {
+
     });
 
 
@@ -363,7 +389,7 @@ $(function () { // jQB //////////////////////////////
 
         if (post.length == 0) {
             if (isLeft) {
-               post = slider.find(' > .slides > .bn:last-child');
+                post = slider.find(' > .slides > .bn:last-child');
             } else {
                 post = slider.find(' > .slides > .bn:first-child');
             }
@@ -375,10 +401,15 @@ $(function () { // jQB //////////////////////////////
         updateCurrentPageNumber();
     });
 
-    setInterval(function () {
+    
+    //룸영역의 자동넘기기 실행함수
+    autoFn4 = function () {
+        autoI4 = setInterval(function () {
+            $('.main-bn > .slider > .page-btns > .next-btn').click();
+        }, 8000);
+    }; ////// autoFn4함수 ///////////////////
 
-        $('.main-bn > .slider > .page-btns > .next-btn').click();
-    }, 8000);
+
 
     // 슬라이더 페이지 번호 지정
     function pageNumber__Init() {
@@ -468,7 +499,7 @@ $(function () { // jQB //////////////////////////////
 
     // 맵위치값 셋팅
     tgpos[5] = $(".map_txt").offset().top;
-    console.log("룸txt위치값:" + tgpos[5]);
+    //console.log("룸txt위치값:" + tgpos[5]);
 
     // 시작기준값을 계산함!(원래위치값 - 윈도우절반)
     tgpos[5] = tgpos[5] - winH / 2
@@ -569,14 +600,16 @@ $(window).scroll(function () {
             bottom: "0",
             opacity: "1"
         })
-
+        
+        if(auto4_sts) autoFn4();
+        auto4_sts=0;//잠금!
 
 
     } // esle if ///////////////////////
     // 맵 영역 스크롤액션!
     else if (scTop > tgpos[5] - 600 &&
         scTop < tgpos[5]) {
-        console.log("맵움직여!");
+        //console.log("맵움직여!");
         $(".map_txt").css({
             bottom: "0",
             opacity: "1"
